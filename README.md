@@ -75,31 +75,19 @@ $ mvn pacakge
 
 # 4. 배포 및 Flink Job 실행
 ```bash
-# 1) maven 패키지 jar파일 생성 (개발) 
-# pom.xml에 flink 라이브러리 3개 scope가 provided인 태그들 주석 처리 해제하고, 패키징 합니다. 
-src/main/resources/config.properties.DEV --> 내용 복사 --> config.properties 
-$ mvn clean 
-$ mvn pacakge
-$ scp ./target/MainStream-0.1.jar hunetailab@172.31.32.40:~/flink/scripts/java
 
-# 1-1) maven 패키지 jar파일 생성 (운영)   
-src/main/resources/config.properties.PROD --> 내용 복사 --> config.properties 
-$ mvn clean 
-$ mvn pacakge
-$ scp ./target/MainStream-0.1.jar hunetailab@10.140.19.40:~/flink/scripts/java
-
-# 2) flink로 jar 애플리케이션 실행 
+# 1) flink로 jar 애플리케이션 실행 
 $ cd ~/flink
 $ ./bin/flink run -d ./scripts/java/MainStream-0.1.jar 20220929133000  <-- Kafka CDC 시작 시간 
 
-# 3) flink web-ui를 통해 job 실행 모니터링 
-http://10.140.19.40:8081/#/overview  
+# 2) flink web-ui를 통해 job 실행 모니터링 
+http://*.*.*.40:8081/#/overview  
 
 위의 url에 접속하여 아래의 두개의 job이 실행중인지 확인 
 Job > Running Jobs > LEARNING_SUBJECT_PROGRESS_RATIO
 Job > Running Jobs > insert-into_default_catalog.default_database.LEARNING_SUBJECT_PROGRESS_RATIO
 
-# 4) flink web-ui를 통해 job 로그 확인 
+# 3) flink web-ui를 통해 job 로그 확인 
 Job > Running Jobs > LEARNING_SUBJECT_PROGRESS_RATIO > Exceptions 
 예외처리나 오류가 있었는지 확인 
 
