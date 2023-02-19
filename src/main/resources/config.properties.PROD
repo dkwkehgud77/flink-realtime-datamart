@@ -1,8 +1,6 @@
 # PROD Properties
-kafka.bootstrap.servers=10.140.19.50:9092, 10.140.19.51:9092, 10.140.19.152:9092
+kafka.bootstrap.servers=*.*.*.50:9092, *.*.*.51:9092, *.*.*.152:9092
 kafka.topics=labs_prod_02.Hlms.TBL_LEARNING_SUBJECT,labs_prod_02.Hlms.TBL_ENROLL
 kafka.group=flink-prod-datamart
 
-aurora.url=jdbc:mysql://datapipeline-duplicated-rds-prod.cluster-c0kti1yoimcb.ap-northeast-2.rds.amazonaws.com
-aurora.username=svc_cdc
-aurora.password=hF#HUNa15&#D
+aurora.url=jdbc:mysql://datapipeline-ip-rds.amazonaws.com
